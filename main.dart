@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, no_logic_in_create_state
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -299,7 +297,7 @@ class _CarroQuitadoFormState extends State<CarroQuitadoForm> {
     if (km > 0 && custoGasolina > 0 && litros > 0 && seguro > 0 && valorVeiculo > 0) {
       final double autonomia = km / litros;
       final double custoPorKm = custoGasolina / autonomia;
-      final double custoDepreciacaoPorKm = valorVeiculo / 100000;  // Exemplo de cálculo de depreciação por km
+      final double custoDepreciacaoPorKm = valorVeiculo / 100000;  // Exemplo de cálculo de depreciação por km - Tentar pensar em uma forma de calcular a depreciação por dia, assim tem o valor diário de gastos
       final double resultado = km * (custoPorKm + custoDepreciacaoPorKm + (seguro / 365));
 
       showDialog(
