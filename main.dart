@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -75,11 +77,18 @@ class CarSelectionScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Selecione o Tipo de Carro'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Center( child: 
+       Padding(
+        padding: const EdgeInsets.all(32.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size (200 , 50),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                textStyle: const TextStyle( fontSize: 20)
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -88,7 +97,13 @@ class CarSelectionScreen extends StatelessWidget {
               },
               child: const Text('Carro Alugado'),
             ),
-            ElevatedButton(
+            const SizedBox(height: 20),
+            ElevatedButton( 
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size (200 , 50),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                textStyle: const TextStyle( fontSize: 20)
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -97,7 +112,13 @@ class CarSelectionScreen extends StatelessWidget {
               },
               child: const Text('Carro Quitado'),
             ),
-            ElevatedButton(
+            const SizedBox(height: 20),
+            ElevatedButton( 
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size (200 , 50),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                textStyle: const TextStyle( fontSize: 20)
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -109,7 +130,7 @@ class CarSelectionScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
 
@@ -297,7 +318,7 @@ class _CarroQuitadoFormState extends State<CarroQuitadoForm> {
     if (km > 0 && custoGasolina > 0 && litros > 0 && seguro > 0 && valorVeiculo > 0) {
       final double autonomia = km / litros;
       final double custoPorKm = custoGasolina / autonomia;
-      final double custoDepreciacaoPorKm = valorVeiculo / 100000;  // Exemplo de cálculo de depreciação por km - Tentar pensar em uma forma de calcular a depreciação por dia, assim tem o valor diário de gastos
+      final double custoDepreciacaoPorKm = valorVeiculo / 100000;  // Exemplo de cálculo de depreciação por km
       final double resultado = km * (custoPorKm + custoDepreciacaoPorKm + (seguro / 365));
 
       showDialog(
